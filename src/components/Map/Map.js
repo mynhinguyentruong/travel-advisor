@@ -6,6 +6,7 @@ import Rating from '@material-ui/lab/Rating'
 import  LocationOnOutlinedIcon  from '@material-ui/icons/LocationOnOutlined'
 
 import useStyles from './styles'
+import mapStyles from './mapStyles'
 
 export default function Map({setCoordinates, setBounds, coordinates, places, setChildClicked, weatherData}) {
 
@@ -21,7 +22,7 @@ export default function Map({setCoordinates, setBounds, coordinates, places, set
         center={coordinates}
         defaultZoom={14}
         margin={[50, 50, 50,50]}
-        options={''}
+        options={{disableDefaultUI: true, zoomControl: true, styles: mapStyles}}
         onChange={(e) => {
           setBounds({ne: e.marginBounds.ne, sw: e.marginBounds.sw})
           setCoordinates({lat: e.center.lat, lng: e.center.lng})
