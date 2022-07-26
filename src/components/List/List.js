@@ -7,27 +7,13 @@ import { PlaceSharp } from '@material-ui/icons';
 import PlaceDetails from '../PlaceDetails/PlaceDetails'
 
 
-export default function List() {
+export default function List({places}) {
 
   const classes = useStyles()
   const [type, setType] = useState('Choose Type')
   const [rating, setRating] = useState('Choose Rating')
 
-  const places = [
-    {name: "Bla bla"},
-    {name: "Bla blahhh"},
-    {name: "Bla bla"},
-    {name: "Bla blahhh"},
-    {name: "Bla bla"},
-    {name: "Bla blahhh"},
-    {name: "Bla bla"},
-    {name: "Bla blahhh"},
-    {name: "Bla bla"},
-    {name: "Bla blahhh"},
-    {name: "Bla bla"},
-    {name: "Bla blahhh"},
-    {name: "Bla blahhhhhhh"}
-  ]
+  
 
   return (
     <div className={classes.container}>
