@@ -15,6 +15,9 @@ function App() {
   const [bounds, setBounds] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
+  const [type, setType] = useState('Choose Type')
+  const [rating, setRating] = useState('Choose Rating')
+
   useEffect(()=> {
     navigator.geolocation.getCurrentPosition(({coords: {latitude,longitude}}) => {
       setCoordinates({lat: latitude, lng: longitude})
@@ -41,7 +44,12 @@ function App() {
           <List 
             places={places} 
             childClicked={childClicked} 
-            isLoading={isLoading} />
+            isLoading={isLoading}
+            type={type}
+            setType={setType}
+            rating={rating}
+            setRating={setRating}
+             />
         </Grid>
         <Grid item xs={12} md={8}>
           <Map 
