@@ -33,8 +33,8 @@ export default function List({places, childClicked,isLoading, type, setType, rat
         <FormControl className={classes.formControl}>
         <InputLabel>Type</InputLabel>
         <Select value={type} onChange={e => setType(e.target.value)}>
-          <MenuItem value="restaurant">Restaurants</MenuItem>
-          <MenuItem value="hotel">Hotel</MenuItem>
+          <MenuItem value="restaurants">Restaurants</MenuItem>
+          <MenuItem value="hotels">Hotel</MenuItem>
           <MenuItem value="attractions">Attractions</MenuItem>
         </Select>
       </FormControl>

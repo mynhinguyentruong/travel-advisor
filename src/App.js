@@ -18,6 +18,13 @@ function App() {
   const [type, setType] = useState('Choose Type')
   const [rating, setRating] = useState('Choose Rating')
 
+  const [filteredPlaces, setFilteredPlaces] = useState([])
+
+  useEffect(() => {
+      const filteredPlaces = places.filter(place => place.rating > rating)
+      setFilteredPlaces(filteredPlaces)
+  }, [rating])
+
   useEffect(()=> {
     navigator.geolocation.getCurrentPosition(({coords: {latitude,longitude}}) => {
       setCoordinates({lat: latitude, lng: longitude})
@@ -27,13 +34,14 @@ function App() {
   useEffect(() => {
     setIsLoading(true)
     if(bounds) {
-      getPlacesData(bounds.sw, bounds.ne).then((data) => {
+      getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
         console.log(data)
         setPlaces(data)
         setIsLoading(false)
+        setFilteredPlaces([])
     })
     }
-  }, [coordinates,bounds])
+  }, [coordinates,bounds, type])
 
   return (
     <>
@@ -42,7 +50,7 @@ function App() {
       <Grid container spacing={3} style={{width: '100%'}} >
         <Grid item xs={12} md={4}>
           <List 
-            places={places} 
+            places={filteredPlaces.length > 0 ? filteredPlaces: places} 
             childClicked={childClicked} 
             isLoading={isLoading}
             type={type}
@@ -56,7 +64,7 @@ function App() {
             setCoordinates={setCoordinates}
             setBounds={setBounds}
             coordinates={coordinates}
-            places={places} 
+            places={filteredPlaces.length > 0 ? filteredPlaces: places} 
             setChildClicked={setChildClicked}
             />
         </Grid>
