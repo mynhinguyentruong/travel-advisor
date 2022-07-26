@@ -5,11 +5,13 @@ import Header from './components/Header/Header';
 import List from './components/List/List';
 import Map from './components/Map/Map';
 
-import {getPlacesData} from './api'
+import {getPlacesData, getWeatherData} from './api'
 
 function App() {
 
   const [places, setPlaces] = useState([])
+  const [weatherData, setWeatherData] = useState([])
+
   const [childClicked, setChildClicked] = useState({})
   const [coordinates, setCoordinates] = useState({lat: 0, lng: 0})
   const [bounds, setBounds] = useState(null)
@@ -34,6 +36,7 @@ function App() {
   useEffect(() => {
     setIsLoading(true)
     if(bounds) {
+      getWeatherData(coordinates.lat, coordinates.lng).then(data => setWeatherData(data) )
       getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
         // only get places that has title and reviews
         setPlaces(data?.filter(place => place.name && place.num_reviews > 0))
@@ -66,6 +69,7 @@ function App() {
             coordinates={coordinates}
             places={filteredPlaces.length > 0 ? filteredPlaces: places} 
             setChildClicked={setChildClicked}
+            weatherData={weatherData}
             />
         </Grid>
       </Grid>

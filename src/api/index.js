@@ -25,3 +25,22 @@ export const getPlacesData = async (type, sw, ne) => {
     alert(error.response.status && "Sorry, I used BASIC subscription plan with no fee because I'm poor to make API Calls, if you see this message that means I reached the maximum quota for this API 🥹")
   }
 }
+
+export const getWeatherData = async(lat, lng) => {
+
+  try {
+    const {data} = await axios.get('https://community-open-weather-map.p.rapidapi.com/weather', {
+      params: {
+        lat: lat,
+        lon: lng,
+      },
+      headers: {
+        'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
+        'X-RapidAPI-Host': 'community-open-weather-map.p.rapidapi.com'
+      }
+    })
+    return data
+  } catch(error) {
+    console.log(error)
+  }
+}
