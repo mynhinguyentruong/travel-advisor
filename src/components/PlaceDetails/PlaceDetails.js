@@ -6,12 +6,12 @@ import Rating from '@material-ui/lab/Rating'
 
 import useStyles from './styles'
 
-export default function PlaceDetails({place, selected, refProp}) {
+export default function PlaceDetails({ place, selected, refProp }) {
 
   const classes = useStyles()
 
   if(selected) {
-    refProp?.current?.scrollIntoView({behavior: "smooth", block:"start"})
+    refProp?.current?.scrollIntoView({ behavior: "smooth", block:"start" })
   }
   return (
     <Card>

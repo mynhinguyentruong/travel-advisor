@@ -16,8 +16,10 @@ export default function List({places, childClicked,isLoading}) {
   
 
   useEffect(() => {
-    const refs = Array(places?.length).fill().map((_, i) => elRefs[i] || createRef)
-    setElRefs(refs)
+    if(places.length > 0) {
+      const refs = Array(places.length).fill().map((element, i) => elRefs[i] || createRef())
+      setElRefs(refs)
+    }
   }, [places]);
 
   return (
