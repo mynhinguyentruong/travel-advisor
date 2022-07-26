@@ -20,10 +20,12 @@ function App() {
   }, [])
 
   useEffect(() => {
-    getPlacesData(bounds.sw, bounds.ne).then((data) => {
+    if(bounds) {
+      getPlacesData(bounds.sw, bounds.ne).then((data) => {
         console.log(data)
         setPlaces(data)
     })
+    }
   }, [coordinates,bounds])
 
   return (
