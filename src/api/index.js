@@ -24,5 +24,6 @@ export const getPlacesData = async (sw, ne) => {
 
   } catch(error) {
     console.log(error)
+    alert(error.response.status && "Sorry, I used BASIC subscription with no fee because I'm poor to make API Calls, if you see this message that means I reached the maximum quota for this API 🥹")
   }
 }
