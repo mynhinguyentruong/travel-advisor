@@ -7,7 +7,7 @@ import  LocationOnOutlinedIcon  from '@material-ui/icons/LocationOnOutlined'
 
 import useStyles from './styles'
 
-export default function Map({setCoordinates, setBounds, coordinates, places, setChildClicked}) {
+export default function Map({setCoordinates, setBounds, coordinates, places, setChildClicked, weatherData}) {
 
   const classes = useStyles()
   const matches = useMediaQuery('(min-width:600px)')
@@ -47,6 +47,11 @@ export default function Map({setCoordinates, setBounds, coordinates, places, set
                   <Rating name="read-only" size="small" value={Number(place.rating)} readOnly />
                 </Paper>
               )}
+          </div>
+        ))}
+        {weatherData?.list?.map((data, i) => (
+          <div key={i} lat={data.coord.lat} lng={data.coord.lon} >
+            <img src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`} height="70px" />
           </div>
         ))}
       </GoogleMapReact>
