@@ -18,7 +18,7 @@ export default function PlaceDetails({place}) {
         />
         <CardContent>
             <Typography gutterBottom variant="h5"
-            >{place.name}
+            >{place.name}</Typography>
             <Box display="flex" justifyContent="space-between">
               <Typography variant="subtitle1">Price</Typography>
               <Typography gutterBottom variant="subtitle1">{place.price_level}</Typography>
@@ -36,17 +36,24 @@ export default function PlaceDetails({place}) {
             {place?.cuisine?.map(({name}) => (
               <Chip key={name} size="small" label={name} className={classes.chip} />
             ) )}
-            {place.address && (
+            {place?.address && (
           <Typography gutterBottom variant="body2" color="textSecondary" className={classes.subtitle}>
             <LocationOnIcon />{place.address}
           </Typography>
-        )}
-        {place.phone && (
-          <Typography variant="body2" color="textSecondary" className={classes.spacing}>
-            <PhoneIcon /> {place.phone}
-          </Typography>
-        )}
-            </Typography>
+            )}
+            {place?.phone && (
+              <Typography variant="body2" color="textSecondary" className={classes.spacing}>
+                <PhoneIcon /> {place.phone}
+              </Typography>
+            )}
+             <CardActions>
+               <Button size="small" color="primary" onClick={() => window.open(place.web_url, '_blank')}>
+                 Trip Advisor
+               </Button>
+               <Button size="small" color="primary" onClick={() => window.open(place.website, '_blank')}>
+                 Website 
+               </Button>
+             </CardActions>
         </CardContent>
     </Card>
   )
