@@ -10,6 +10,7 @@ import useStyles from './styles'
 export default function Map() {
 
   const classes = useStyles()
+  const isMobile = useMediaQuery('(min-width:600px)')
 
   return (
     <div className={classes.mapContainer}>Map goes here</div>
