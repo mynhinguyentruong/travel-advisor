@@ -7,7 +7,7 @@ import  LocationOnOutlinedIcon  from '@material-ui/icons/LocationOnOutlined'
 
 import useStyles from './styles'
 
-export default function Map({setCoordinates, setBounds, coordinates, places}) {
+export default function Map({setCoordinates, setBounds, coordinates, places, setChildClicked}) {
 
   const classes = useStyles()
   const matches = useMediaQuery('(min-width:600px)')
@@ -26,7 +26,7 @@ export default function Map({setCoordinates, setBounds, coordinates, places}) {
           setBounds({ne: e.marginBounds.ne, sw: e.marginBounds.sw})
           setCoordinates({lat: e.center.lat, lng: e.center.lng})
         }}
-        onChildClick={''}
+        onChildClick={(child) => {setChildClicked(child)}}
       >
          {places.length && places.map((place, i) => (
           <div
