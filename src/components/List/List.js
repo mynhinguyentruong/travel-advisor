@@ -16,6 +16,16 @@ export default function List() {
   const places = [
     {name: "Bla bla"},
     {name: "Bla blahhh"},
+    {name: "Bla bla"},
+    {name: "Bla blahhh"},
+    {name: "Bla bla"},
+    {name: "Bla blahhh"},
+    {name: "Bla bla"},
+    {name: "Bla blahhh"},
+    {name: "Bla bla"},
+    {name: "Bla blahhh"},
+    {name: "Bla bla"},
+    {name: "Bla blahhh"},
     {name: "Bla blahhhhhhh"}
   ]
 
