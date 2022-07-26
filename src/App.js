@@ -35,13 +35,13 @@ function App() {
     setIsLoading(true)
     if(bounds) {
       getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
-        console.log(data)
-        setPlaces(data)
+        // only get places that has title and reviews
+        setPlaces(data?.filter(place => place.name && place.num_reviews > 0))
         setIsLoading(false)
         setFilteredPlaces([])
     })
     }
-  }, [coordinates,bounds, type])
+  }, [bounds, type])
 
   return (
     <>
